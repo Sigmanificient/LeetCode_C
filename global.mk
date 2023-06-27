@@ -130,7 +130,7 @@ $(TESTS): $(TEST_OBJ)
 	$(call LOG,":g$@")
 
 tests_run: $(TESTS)
-	@ ./$(TESTS) -OP:F --full-stats
+	@ ./$(TESTS) -j 8 --verbose=1
 
 .PHONY: tests_run
 
