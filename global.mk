@@ -137,7 +137,7 @@ tests_run: $(TESTS)
 cov: tests_run
 	$(call CHECK_CMD, gcovr)
 	$Q $(call CHECK_CMD, gcovr)
-	$Q gcovr . --exclude tests --exclude-directories .direnv
+	$Q gcovr . -e "src/[-\w\d]+/tests.c" --exclude-directories .direnv
 
 .PHONY: cov
 
