@@ -2,6 +2,7 @@ SRC :=
 
 MAKEFILES += 0000-hello
 MAKEFILES += 0001-two-sum
+MAKEFILES += 0002-add-two-numbers
 
 define include-me
 include src/$(strip $(1))/local.mk
