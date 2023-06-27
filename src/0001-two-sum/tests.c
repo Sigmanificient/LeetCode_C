@@ -51,3 +51,13 @@ Test(two_sum, test_case_3)
         .expect = (int []){0, 1}
     });
 }
+
+Test(two_sum, test_case_4)
+{
+    test_method(&(test_data_t){
+        .target = 0,
+        .nums = (int []){0, 4, 3, 0},
+        .num_size = 4,
+        .expect = (int []){0, 3}
+    });
+}
