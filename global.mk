@@ -123,8 +123,9 @@ $(BUILD_DIR)/%.o: %.c
 	$(call LOG,":c" $(notdir $@))
 
 $(TESTS): CFLAGS += -g3 --coverage
-$(TESTS): LDLIBS += -lcriterion
+$(TESTS): LDLIBS += -lcriterion -lasan
 $(TESTS): LDFLAGS += -fprofile-arcs -ftest-coverage
+$(TESTS): LDFLAGS += -fsanitize=address,leak,undefined
 $(TESTS): $(TEST_OBJ)
 	$Q $(CC) -o $@ $^ $(CFLAGS) $(LDLIBS) $(LDFLAGS)
 	$(call LOG,":g$@")
