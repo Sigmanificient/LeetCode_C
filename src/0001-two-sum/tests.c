@@ -1,6 +1,6 @@
 #include <criterion/criterion.h>
 
-int *two_sum(int *nums, int nums_size, int target, int *return_size);
+int *two_sum(const int *nums, int nums_size, int target, int *return_size);
 
 typedef struct {
     int *nums;
@@ -8,7 +8,6 @@ typedef struct {
     int target;
     int *expect;
 } test_data_t;
-
 
 void test_method(test_data_t *td)
 {
