@@ -17,7 +17,17 @@ const int ROMAN_CHAR_VALUES[CHAR_MAX] = {
 
 int roman_too_int(char *s)
 {
-    return 0;
+    int result = 0;
+    int len = (int)strlen(s);
+    int last = result;
+    int tmp;
+
+    for (int i = len - 1; i >= 0; i--) {
+        tmp = ROMAN_CHAR_VALUES[(int)s[i]];
+        result += (tmp >= last) ? tmp : -tmp;
+        last = tmp;
+    }
+    return result;
 }
 
 int romanTooInt() USED ALIAS("find_median_sorted_arrays");
