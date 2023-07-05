@@ -10,7 +10,7 @@ Test(longest_substring, test_case_1)
 
     if (actual == SENTINEL)
         cr_skip("Allocation Failure.");
-    cr_assert_eq(actual, 3, "actual:%d", actual);
+    cr_assert_eq(actual, 3, "actual:%d vs %d", actual, 3);
 }
 
 Test(longest_substring, test_case_2)
@@ -19,7 +19,7 @@ Test(longest_substring, test_case_2)
 
     if (actual == SENTINEL)
         cr_skip("Allocation Failure.");
-    cr_assert_eq(actual, 1, "actual:%d", actual);
+    cr_assert_eq(actual, 1, "actual:%d vs %d", actual, 1);
 }
 
 Test(longest_substring, test_case_3)
@@ -28,5 +28,14 @@ Test(longest_substring, test_case_3)
 
     if (actual == SENTINEL)
         cr_skip("Allocation Failure.");
-    cr_assert_eq(actual, 3, "actual:%d", actual);
+    cr_assert_eq(actual, 3, "actual:%d vs %d", actual, 3);
+}
+
+Test(longest_substring, test_case_4)
+{
+    int actual = length_of_longest_substring(" ");
+
+    if (actual == SENTINEL)
+        cr_skip("Allocation Failure.");
+    cr_assert_eq(actual, 1, "actual:%d vs %d", actual, 1);
 }
