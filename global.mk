@@ -122,9 +122,11 @@ $(BUILD_DIR)/%.o: %.c
 	$Q $(CC) $(CFLAGS) -c $< -o $@
 	$(call LOG,":c" $(notdir $@))
 
+ifneq ($(NO_COV),1)
 $(TESTS): CFLAGS += -g3 --coverage
-$(TESTS): LDLIBS += -lcriterion -lasan
 $(TESTS): LDFLAGS += -fprofile-arcs -ftest-coverage
+endif
+$(TESTS): LDLIBS += -lcriterion -lasan
 $(TESTS): LDFLAGS += -fsanitize=address,leak,undefined
 $(TESTS): $(TEST_OBJ)
 	$Q $(CC) -o $@ $^ $(CFLAGS) $(LDLIBS) $(LDFLAGS)
