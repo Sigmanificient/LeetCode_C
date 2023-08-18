@@ -6,18 +6,53 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, utils } @inputs:
+  outputs = { self, nixpkgs, utils }:
     utils.lib.eachDefaultSystem (system:
-      with import nixpkgs { inherit system; }; {
-        devShells.default = mkShell {
-          packages = [
-            criterion
-            gcc12
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+
+        cc = pkgs.gcc12;
+        libs = with pkgs; [ criterion ];
+
+        mkTests = name: dir: pkgs.stdenv.mkDerivation {
+          inherit name;
+          src = ./.;
+
+          makeFlags = [ "CC=${cc}/bin/gcc" ];
+          buildInputs = libs ++ [ pkgs.ncurses ];
+
+          hardeningDisable = [ "format" "fortify" ];
+          enableParallelBuilding = true;
+
+          buildPhase = ''
+            make -sC ${dir} run_tests NO_COV=1
+          '';
+
+          installPhase = ''
+            mkdir -p $out/bin
+            cp ${dir}/run_tests $out/bin/${name}
+          '';
+        };
+
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
             glibc
             gcovr
+            ltrace
             gnumake
             valgrind
-          ];
+            python311Packages.compiledb
+          ] ++ [ cc ] ++ libs;
         };
+
+        packages = {
+          default = mkTests "run_tests" ".";
+        } // builtins.mapAttrs
+          (
+            k: v: mkTests k ("./src/" + k)
+          )
+          (builtins.readDir ./src);
       });
 }
