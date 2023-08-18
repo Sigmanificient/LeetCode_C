@@ -15,7 +15,7 @@ const int ROMAN_CHAR_VALUES[CHAR_MAX] = {
     [ 'M' ] = 1000,
 };
 
-int roman_too_int(char *s)
+int roman_to_int(char *s)
 {
     int result = 0;
     int len = (int)strlen(s);
@@ -30,4 +30,4 @@ int roman_too_int(char *s)
     return result;
 }
 
-int romanTooInt() USED ALIAS("find_median_sorted_arrays");
+int romanToInt() USED ALIAS("roman_to_int");
