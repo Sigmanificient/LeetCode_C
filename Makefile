@@ -6,6 +6,7 @@ MAKEFILES += 0002-add-two-numbers
 MAKEFILES += 0003-longest-substring-without-repeating-characters
 MAKEFILES += 0004-median-of-two-sorted-arrays
 MAKEFILES += 0013-roman_to_integer
+MAKEFILES += 0014-longest-common-prefix
 
 define include-me
 include src/$(strip $(1))/local.mk
