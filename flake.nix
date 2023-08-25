@@ -47,6 +47,7 @@
           ] ++ [ cc ] ++ libs;
         };
 
+        formatter = pkgs.nixpkgs-fmt;
         packages = {
           default = mkTests "run_tests" ".";
         } // builtins.mapAttrs
