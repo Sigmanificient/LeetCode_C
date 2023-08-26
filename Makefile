@@ -5,6 +5,7 @@ MAKEFILES += 0001-two-sum
 MAKEFILES += 0002-add-two-numbers
 MAKEFILES += 0003-longest-substring-without-repeating-characters
 MAKEFILES += 0004-median-of-two-sorted-arrays
+MAKEFILES += 0007-reverse-integer
 MAKEFILES += 0013-roman_to_integer
 MAKEFILES += 0014-longest-common-prefix
 MAKEFILES += 0020-valid-parentheses
