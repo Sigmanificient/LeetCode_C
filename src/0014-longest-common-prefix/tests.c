@@ -11,7 +11,7 @@ Test(longestCommonPrefix, test_case_1)
         "flight"
     };
 
-    out = longestCommonPrefix((char **)in, 3);
+    out = longestCommonPrefix(in, 3);
     cr_assert_str_eq(out, "fl");
     free(out);
 }
@@ -25,7 +25,7 @@ Test(longestCommonPrefix, test_case_2)
         "car"
     };
 
-    out = longestCommonPrefix((char **)in, 3);
+    out = longestCommonPrefix(in, 3);
     cr_assert_str_eq(out, "");
     free(out);
 }

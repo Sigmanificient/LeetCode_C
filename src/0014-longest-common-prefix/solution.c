@@ -1,4 +1,4 @@
-#include <strings.h>
+#include <string.h>
 #include <unistd.h>
 
 char *longestCommonPrefix(char **strs, int strsSize)
@@ -17,9 +17,5 @@ char *longestCommonPrefix(char **strs, int strsSize)
     }
 
 solved:
-    current = strndup(check, j + 1);
-    if (current == NULL)
-        return NULL;
-    current[j] = '\0';
-    return current;
+    return strndup(*strs, j);
 }
