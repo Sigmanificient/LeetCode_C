@@ -150,16 +150,7 @@ RECURSE = $(MAKE) $(1) --no-print-directory START_TIME=$(START_TIME)
 # ↓ file & rules guard
 SENTINEL = $(error Missing $(if $(findstring .,$(1)),file,rule) $(1))
 
-%:
-	$(call SENTINEL, $@)
-
-undefine %.c
-
-%.c:
-	$(call SENTINEL, $@)
-
 # ↓ User override
-
 ifneq ($(shell find . -name override.mk),)
 -include override.mk
 endif

@@ -35,7 +35,6 @@ char get_ptr(unsigned char *x, int offset)
 
 bool analyze_string(char *s, size_t slen, unsigned char *x)
 {
-    unsigned char v;
     int offset = 0;
 
     while (*s) {
@@ -43,12 +42,12 @@ bool analyze_string(char *s, size_t slen, unsigned char *x)
             offset--;
             if (offset < 0)
                 return false;
-            if (get_ptr(x, offset) != SYMBOLS[*s])
+            if (get_ptr(x, offset) != SYMBOLS[(unsigned char)*s])
                 return false;
         } else {
-            if (offset >= slen)
+            if ((size_t)offset >= slen)
                 return false;
-            set_ptr(x, offset, SYMBOLS[*s]);
+            set_ptr(x, offset, SYMBOLS[(unsigned char)*s]);
             offset++;
         }
         s++;

@@ -5,7 +5,6 @@ char *longestCommonPrefix(char **strs, int strsSize)
 {
     int j = 0;
     char *check = *strs;
-    char *current;
 
     if (strsSize == 1)
         return *strs;
