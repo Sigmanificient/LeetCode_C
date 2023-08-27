@@ -10,8 +10,10 @@ MAKEFILES += 0013-roman_to_integer
 MAKEFILES += 0014-longest-common-prefix
 MAKEFILES += 0020-valid-parentheses
 
+export DELAY_GLOBAL_IMPORT := 1
+
 define include-me
-include src/$(strip $(1))/local.mk
+include src/$(strip $(1))/Makefile
 
 endef
 

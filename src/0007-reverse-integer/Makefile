@@ -1,4 +1,9 @@
 BUILD_DIR := ../../.build/src/$(notdir $(CURDIR))
+D := $(dir $(lastword $(MAKEFILE_LIST)))
 
-include ./local.mk
-include ../../global.mk
+SRC += $D/tests.c
+SRC += $D/solution.c
+
+ifndef DELAY_GLOBAL_IMPORT
+  include ../../global.mk
+endif
