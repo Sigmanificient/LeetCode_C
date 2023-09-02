@@ -10,6 +10,8 @@ MAKEFILES += 0009-palindrome-number
 MAKEFILES += 0013-roman_to_integer
 MAKEFILES += 0014-longest-common-prefix
 MAKEFILES += 0020-valid-parentheses
+MAKEFILES += 0021-merge-two-sorted-lists
+MAKEFILES += 0024-swap-nodes-in-pairs
 
 export DELAY_GLOBAL_IMPORT := 1
 
